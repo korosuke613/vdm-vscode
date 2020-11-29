@@ -1,4 +1,5 @@
 {
+    "comment": "quote from https://github.com/James-Yu/LaTeX-Workshop/blob/master/syntax/LaTeX.tmLanguage.json",
     "fileTypes": [
       "tex"
     ],
@@ -6,16 +7,6 @@
     "keyEquivalent": "^~L",
     "name": "LaTeX",
     "patterns": [
-      {
-        "begin": "(\\\\begin\\{vdm_al\\})",
-        "contentName": "source.vdmpp",
-        "patterns": [
-            {
-            "include": "source.vdmpp"
-            }
-        ],
-        "end": "(\\\\end\\{vdm_al\\})"
-      },
       {
         "comment": "This scope identifies partially typed commands such as `\\tab`. We use this to trigger “Command Completion” only when it makes sense.",
         "match": "(?<=\\\\[\\w@]|\\\\[\\w@]{2}|\\\\[\\w@]{3}|\\\\[\\w@]{4}|\\\\[\\w@]{5}|\\\\[\\w@]{6})\\s",
@@ -930,6 +921,33 @@
         },
         "end": "((\\\\)end)(\\{)(\\4)(\\})(?:\\s*\\n)?",
         "name": "meta.function.environment.latex.mpost"
+      },
+      {
+        "begin": "(?:\\s*)((\\\\)begin)(\\{)(vdm_al[*]?)(\\})",
+        "contentName": "source.vdmpp",
+        "captures": {
+            "1": {
+              "name": "support.function.be.latex"
+            },
+            "2": {
+              "name": "punctuation.definition.function.latex"
+            },
+            "3": {
+              "name": "punctuation.definition.arguments.begin.latex"
+            },
+            "4": {
+              "name": "variable.parameter.function.latex"
+            },
+            "5": {
+              "name": "punctuation.definition.arguments.end.latex"
+            }
+        },
+        "patterns":[
+            {
+                "include": "source.vdmpp"
+            }
+        ],
+        "end": "((\\\\)end)(\\{)(\\4)(\\})(?:\\s*\\n)?"
       },
       {
         "begin": "(?:\\s*)((\\\\)begin)(\\{)(\\w+[*]?)(\\})",
