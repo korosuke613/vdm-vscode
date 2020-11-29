@@ -3,8 +3,36 @@
 	"name": "VDM",
 	"patterns": [
 		{
+			"include": "#vdm-in-latex"
+		},
+		{
+			"include": "#other-latex"
+		},
+		{
 			"include": "source.vdm"
 		}
 	],
-	"scopeName": "source.vdmpp"
+	"scopeName": "source.vdmpp",
+	"repository": {
+		"vdm-in-latex": {
+			"begin": "(\\\\begin{.*})",
+			"end": "(?=\\\\end{.*})",
+			"name": "meta.latex",
+			"beginCaptures": {
+				"1": {
+					"name": "comment.line"
+				}
+			},
+			"patterns": [
+				{
+					"include": "source.vdm"
+				}
+			]
+		},
+		"other-latex": {
+			"begin": "[\\S\\s]*",
+			"end": "(?=\\\\begin{.*})",
+			"name": "comment.line"
+		}
+	}
 }
