@@ -320,6 +320,19 @@
           ".vdmpp"
         ],
         "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "latex",
+        "aliases": [
+          "LaTeX",
+          "latex"
+        ],
+        "extensions": [
+          ".tex",
+          ".ltx",
+          ".ctx"
+        ],
+        "configuration": "./syntax/syntax.json"
       }
     ],
     "grammars": [
@@ -347,6 +360,29 @@
       {
         "scopeName": "source.vdm.statements",
         "path": "./syntaxes/vdm.statements.tmLanguage.json"
+      },
+      {
+        "language": "latex",
+        "scopeName": "text.tex.latex",
+        "path": "./syntaxes/latex.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.asymptote": "asymptote",
+          "source.cpp": "cpp_embedded_latex",
+          "source.css": "css",
+          "source.dot": "dot",
+          "source.gnuplot": "gnuplot",
+          "text.html": "html",
+          "source.java": "java",
+          "source.js": "javascript",
+          "source.lua": "lua",
+          "source.python": "python",
+          "source.ruby": "ruby",
+          "source.scala": "scala",
+          "source.ts": "typescript",
+          "text.xml": "xml",
+          "source.yaml": "yaml",
+          "source.vdmpp": "vdmpp"
+        }
       }
     ],
     "debuggers": [
