@@ -15,12 +15,22 @@
 	"scopeName": "source.vdmpp",
 	"repository": {
 		"vdm-in-latex": {
-			"begin": "(\\\\begin{.*})",
-			"end": "(?=\\\\end{.*})",
-			"name": "meta.latex",
+			"patterns": [
+				{
+					"include": "#inside-latex"
+				},
+				{
+					"include": "#outside-latex"
+				}
+			]
+		},
+		"inside-latex": {
+			"begin": "(\\\\begin\\{.*\\})",
+			"end": "(?=\\\\end\\{.*\\})",
+			"name": "meta.inside.latex",
 			"beginCaptures": {
 				"1": {
-					"name": "comment.line"
+					"name": "keyword.other"
 				}
 			},
 			"patterns": [
@@ -29,10 +39,21 @@
 				}
 			]
 		},
-		"other-latex": {
-			"begin": "[\\S\\s]*",
-			"end": "(?=\\\\begin{.*})",
-			"name": "comment.line"
+		"outside-latex": {
+			"begin": "(\\\\end\\{.*\\})",
+			"end": "(?=\\\\begin\\{.*\\})",
+			"name": "meta.outside.latex",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.other"
+				}
+			},
+			"patterns": [
+				{
+					"name": "comment.block",
+					"match": "\\S+"
+				}
+			]
 		}
 	}
 }
